@@ -28,5 +28,3 @@ class TestRouter(TestCase):
         router.add_route("/", DumbHandler, "index")
         router.remove_route("index")
 
-
-
