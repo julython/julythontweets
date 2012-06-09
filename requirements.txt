@@ -1,0 +1,5 @@
+argparse==1.2.1
+tornado==2.3
+-e git://github.com/joshmarshall/TweetStream.git@ecbb97282912685cf495c0819e2118840f622d88#egg=tweetstream-dev
+unittest2==0.5.1
+wsgiref==0.1.2
