@@ -3,10 +3,11 @@
 class Watcher(object):
     """Just the basic interface for IOLoop watchers."""
 
-    def __init__(self, ioloop, configuration):
+    def __init__(self, ioloop, callback, configuration):
         """The configuration should be a dict of whatever is needed."""
         self._ioloop = ioloop
         self._configuration = configuration
+        self._callback = callback
 
     def start(self):
         """

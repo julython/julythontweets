@@ -11,6 +11,8 @@ class TestWatcher(TestCase):
     def test_base_watcher(self):
         """Test the watcher interface."""
         ioloop = IOLoop()
-        watcher = Watcher(ioloop, {})
+        def callback():
+            pass
+        watcher = Watcher(ioloop, callback, {})
         with self.assertRaises(NotImplementedError):
             watcher.start()
