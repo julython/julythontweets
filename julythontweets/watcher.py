@@ -1,5 +1,8 @@
 """The basic watcher interface."""
 
+# TODO: This should implement "add_callback()" and set multiple
+# callbacks, whose signatures are defined by the watcher.
+
 class Watcher(object):
     """Just the basic interface for IOLoop watchers."""
 

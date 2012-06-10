@@ -7,6 +7,10 @@ from tornado.httpclient import AsyncHTTPClient
 import tweetstream
 import urlparse
 
+# TODO: Extracting links from a tweet is wrong -- the watcher should
+# call each add_callback() (not implemented yet) with the tweet and
+# the callback should extract the link, parse the tweet, etc.
+
 class MissingTwitterConfiguration(Exception):
     """Raised when a piece of configuration is missing for TwitterWatcher."""
     pass
