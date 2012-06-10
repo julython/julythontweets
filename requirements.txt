@@ -1,6 +1,8 @@
 argparse==1.2.1
+httplib2==0.7.4
 nose==1.1.2
+oauth2==1.5.211
 tornado==2.3
--e git://github.com/joshmarshall/TweetStream.git@f097e2db75c7365ab55699cc97195a7841fa935c#egg=tweetstream-dev
+-e git://github.com/joshmarshall/TweetStream.git@74355ddd8718e700e0fac25447010af7f73c60f3#egg=tweetstream-dev
 unittest2==0.5.1
 wsgiref==0.1.2

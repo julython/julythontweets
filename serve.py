@@ -13,7 +13,7 @@ def main():
     router = Router()
     register_handlers(router)
     app = Application(router.get_routes())
-    app.listen(config.port, io_loop=ioloop)
+    app.listen(config.PORT, io_loop=ioloop)
     register_watchers(ioloop)
     ioloop.start()
 

@@ -16,30 +16,23 @@ class TwitterWatcher(Watcher):
     Utilizes the TweetStream library to watch the Twitter stream
     for particular posts, etc.
     """
-    
+
     def __init__(self, ioloop, callback, configuration):
         super(TwitterWatcher, self).__init__(ioloop, callback, configuration)
-        self._twitter_username = configuration.get("twitter_username")
-        self._twitter_password = configuration.get("twitter_password")
-        self._twitter_search_term = configuration.get("twitter_search_term")
-        self._parsers = configuration.get("parsers")
-
-        if not self._twitter_username:
-            raise MissingTwitterConfiguration("Missing 'twitter_username'.")
-        if not self._twitter_password:
-            raise MissingTwitterConfiguration("Missing 'twitter_password'.")
-        if not self._twitter_search_term:
-            raise MissingTwitterConfiguration(
-                "Missing 'twitter_search_term'.")
-        # parsers could be an empty dict or something, although
-        # that's a bit silly
-        if self._parsers is None:
-            raise MissingTwitterConfiguration("Missing 'parsers'.")
-
+        self._configuration = configuration
+        for key in [
+                "twitter_consumer_key", "twitter_consumer_secret",
+                "twitter_access_token", "twitter_access_token_secret",
+                "twitter_search_term", "parsers"
+            ]:
+            value = configuration.get(key)
+            if value is None:
+                raise MissingTwitterConfiguration("Missing '%s'" % key)
+            setattr(self, "_%s" % key, value)
 
     def start(self):
         """Attach to the IOLoop."""
-        self._tweetstream = tweetstream.TweetStream(self._ioloop,
+        self._tweetstream = tweetstream.TweetStream(ioloop=self._ioloop,
             configuration=self._configuration)
         self._tweetstream.fetch("/1/statuses/filter.json?track=%s" %
             self._twitter_search_term, callback=self.extract_from_tweet)
@@ -87,5 +80,5 @@ class TwitterWatcher(Watcher):
             # we're assuming result is a dictionary -- dangerous?
             result["tweet"] = tweet
             self._callback(result)
-            
+
         parser.parse(final_url, format_for_callback)

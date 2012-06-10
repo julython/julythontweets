@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/julython/julythontweets/commits/master</id>
+  <link type="text/html" rel="alternate" href="https://github.com/julython/julythontweets/commits/master"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/julython/julythontweets/commits/master.atom"/>
+  <title>Recent Commits to julythontweets:master</title>
+  <updated>2012-06-09T14:38:30-07:00</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/25645d2cf6b58d2657cf6eb0fb4ca59d5f2499f4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/julython/julythontweets/commit/25645d2cf6b58d2657cf6eb0fb4ca59d5f2499f4"/>
+    <title>First iteration of the TwitterWatcher.</title>
+    <updated>2012-06-09T14:38:30-07:00</updated>
+    <media:thumbnail height="30" width="30" url="https://secure.gravatar.com/avatar/5eff89df31844a6bc6e19b27244e0388?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png"/>
+      <author>
+        <name>Josh Marshall</name>
+        <uri>https://github.com/joshmarshall</uri>
+      </author>
+    <content type="html">
+      &lt;pre>m julythontweets/watcher.py
++ julythontweets/watchers/__init__.py
++ julythontweets/watchers/twitter_watcher.py
+m requirements.txt
+m tests/test_watcher.py
++ tests/watchers/__init__.py
++ tests/watchers/test_tweetstream_watcher.py
+&lt;/pre>
+      &lt;pre style='white-space:pre-wrap;width:81ex'>First iteration of the TwitterWatcher.&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fa30f27e18492df3e67f9c92379344895501e55c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/julython/julythontweets/commit/fa30f27e18492df3e67f9c92379344895501e55c"/>
+    <title>Adding the watcher interface.</title>
+    <updated>2012-06-09T12:36:53-07:00</updated>
+    <media:thumbnail height="30" width="30" url="https://secure.gravatar.com/avatar/5eff89df31844a6bc6e19b27244e0388?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png"/>
+      <author>
+        <name>Josh Marshall</name>
+        <uri>https://github.com/joshmarshall</uri>
+      </author>
+    <content type="html">
+      &lt;pre>+ julythontweets/watcher.py
++ tests/test_watcher.py
+&lt;/pre>
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Adding the watcher interface.&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3bd5c867af93dbdcde0f28c6efdb31237f9dbc5a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/julython/julythontweets/commit/3bd5c867af93dbdcde0f28c6efdb31237f9dbc5a"/>
+    <title>Tweaking router.</title>
+    <updated>2012-06-09T12:28:43-07:00</updated>
+    <media:thumbnail height="30" width="30" url="https://secure.gravatar.com/avatar/5eff89df31844a6bc6e19b27244e0388?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png"/>
+      <author>
+        <name>Josh Marshall</name>
+        <uri>https://github.com/joshmarshall</uri>
+      </author>
+    <content type="html">
+      &lt;pre>m tests/test_router.py
+&lt;/pre>
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Tweaking router.&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3351d1ae4cbd98801fa58bba7f0f82aecc41e153</id>
+    <link type="text/html" rel="alternate" href="https://github.com/julython/julythontweets/commit/3351d1ae4cbd98801fa58bba7f0f82aecc41e153"/>
+    <title>Adding the parser interface, the configuration, and the base serve.py file for starting the thing up (which is still broken atm)</title>
+    <updated>2012-06-09T12:28:33-07:00</updated>
+    <media:thumbnail height="30" width="30" url="https://secure.gravatar.com/avatar/5eff89df31844a6bc6e19b27244e0388?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png"/>
+      <author>
+        <name>Josh Marshall</name>
+        <uri>https://github.com/joshmarshall</uri>
+      </author>
+    <content type="html">
+      &lt;pre>+ julythontweets/config.py
++ julythontweets/parser.py
++ serve.py
++ tests/parsers/__init__.py
++ tests/test_config.py
++ tests/test_parser.py
+&lt;/pre>
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Adding the parser interface, the configuration, and the base serve.py file for starting the thing up (which is still broken atm)&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2c343f46fef94b917bcbf6b9b204b9924673b8e2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/julython/julythontweets/commit/2c343f46fef94b917bcbf6b9b204b9924673b8e2"/>
+    <title>Adding basic app and router (and tests).</title>
+    <updated>2012-06-09T11:24:06-07:00</updated>
+    <media:thumbnail height="30" width="30" url="https://secure.gravatar.com/avatar/5eff89df31844a6bc6e19b27244e0388?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png"/>
+      <author>
+        <name>Josh Marshall</name>
+        <uri>https://github.com/joshmarshall</uri>
+      </author>
+    <content type="html">
+      &lt;pre>+ julythontweets/__init__.py
++ julythontweets/application.py
++ julythontweets/router.py
++ tests/test_application.py
++ tests/test_router.py
+&lt;/pre>
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Adding basic app and router (and tests).&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c7c426be6ae46852092a0b7e20fa240ccbbae73d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/julython/julythontweets/commit/c7c426be6ae46852092a0b7e20fa240ccbbae73d"/>
+    <title>Adding README.md.</title>
+    <updated>2012-06-09T10:47:24-07:00</updated>
+    <media:thumbnail height="30" width="30" url="https://secure.gravatar.com/avatar/5eff89df31844a6bc6e19b27244e0388?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png"/>
+      <author>
+        <name>Josh Marshall</name>
+        <uri>https://github.com/joshmarshall</uri>
+      </author>
+    <content type="html">
+      &lt;pre>+ README.md
+&lt;/pre>
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Adding README.md.&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/012b2e084de70b3e995fe6e11068d5f2c7f478b0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/julython/julythontweets/commit/012b2e084de70b3e995fe6e11068d5f2c7f478b0"/>
+    <title>Creating project.</title>
+    <updated>2012-06-09T10:44:24-07:00</updated>
+    <media:thumbnail height="30" width="30" url="https://secure.gravatar.com/avatar/5eff89df31844a6bc6e19b27244e0388?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png"/>
+      <author>
+        <name>Josh Marshall</name>
+        <uri>https://github.com/joshmarshall</uri>
+      </author>
+    <content type="html">
+      &lt;pre>+ .gitignore
++ requirements.txt
+&lt;/pre>
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Creating project.&lt;/pre>
+    </content>
+  </entry>
+</feed>

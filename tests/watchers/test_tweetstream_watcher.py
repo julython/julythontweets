@@ -3,7 +3,7 @@
 from julythontweets.watchers.twitter_watcher import TwitterWatcher
 from julythontweets.watchers.twitter_watcher import MissingTwitterConfiguration
 
-import time
+from tests.helpers import TimeoutMixin
 from tornado.ioloop import IOLoop
 from tweetstream import TweetStream
 from unittest2 import TestCase
@@ -12,7 +12,7 @@ from unittest2 import TestCase
 # we need to save it and reset it after the test is done
 _ORIGINAL_TWEETSTREAM_FETCH = TweetStream.fetch
 
-class TestTwitterWatcher(TestCase):
+class TestTwitterWatcher(TestCase, TimeoutMixin):
 
     def setUp(self):
         TweetStream.fetch = self._catch_tweetstream_fetch
@@ -27,14 +27,6 @@ class TestTwitterWatcher(TestCase):
         self._tweetstream_fetch_called = True
         self._ioloop.stop()
 
-    def add_timeout(self, seconds):
-        """Just add a timeout to the IOLoop."""
-        self._ioloop.add_timeout(time.time() + seconds, self._ioloop_timeout)
-
-    def _ioloop_timeout(self):
-        """The callback(s) weren't called properly."""
-        self._ioloop.stop()
-        self.fail("The IOLoop timed out.")
 
     def test_twitter_watcher(self):
 
@@ -42,8 +34,10 @@ class TestTwitterWatcher(TestCase):
             self.fail("Callback should not have been called.")
 
         config = {
-            "twitter_username": "whatever",
-            "twitter_password": "foobar",
+            "twitter_consumer_key": "key",
+            "twitter_consumer_secret": "secret",
+            "twitter_access_token": "token",
+            "twitter_access_token_secret": "token_secret",
             "twitter_search_term": "searching",
             "parsers": {}
         }
@@ -81,8 +75,10 @@ class TestTwitterWatcher(TestCase):
             "www.google.com": FakeParser()
         }
         config = {
-            "twitter_username": "who",
-            "twitter_password": "whowho",
+            "twitter_consumer_key": "key",
+            "twitter_consumer_secret": "secret",
+            "twitter_access_token": "token",
+            "twitter_access_token_secret": "token_secret",
             "twitter_search_term": "ireallywanttoknow",
             "parsers": parsers
         }

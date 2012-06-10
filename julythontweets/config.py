@@ -13,8 +13,14 @@ JULYTHON_ENDPOINT_SECRET = os.environ.get("JULYTHON_ENDPOINT_SECRET") or \
     "foobar"
 
 # Twitter configuration
-TWITTER_USERNAME = os.environ.get("TWITTER_USERNAME") or "faketwitter"
-TWITTER_PASSWORD = os.environ.get("TWITTER_PASSWORD") or "fakepassword"
-
+TWITTER_CONSUMER_KEY = os.environ.get("TWITTER_CONSUMER_KEY") or \
+    "fakeconsumerkey"
+TWITTER_CONSUMER_SECRET = os.environ.get("TWITTER_CONSUMER_SECRET") or \
+    "fakeconsumersecret"
+TWITTER_ACCESS_TOKEN = os.environ.get("TWITTER_ACCESS_TOKEN") or \
+    "fakeaccesstoken"
+TWITTER_ACCESS_TOKEN_SECRET = os.environ.get("TWITTER_ACCESS_TOKEN_SECRET") \
+    or "fakeaccesstokensecret"
+TWITTER_SEARCH_TERM = os.environ.get("TWITTER_SEARCH_TERM") or "julython"
 
 

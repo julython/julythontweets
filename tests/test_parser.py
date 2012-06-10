@@ -8,7 +8,7 @@ class TestParser(TestCase):
 
     def test_base_parser(self):
         """Test the parser interface."""
-        parser = Parser({})
+        parser = Parser(ioloop=None, configuration={})
         def callback(result):
             raise Exception("This should not have been called")
 
