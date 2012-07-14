@@ -27,7 +27,6 @@ class TestTwitterWatcher(TestCase, TimeoutMixin):
         self._tweetstream_fetch_called = True
         self._ioloop.stop()
 
-
     def test_twitter_watcher(self):
 
         def callback(result):
@@ -39,7 +38,8 @@ class TestTwitterWatcher(TestCase, TimeoutMixin):
             "twitter_access_token": "token",
             "twitter_access_token_secret": "token_secret",
             "twitter_search_term": "searching",
-            "parsers": {}
+            "parsers": {},
+            "callbacks": []
         }
         for key in config.keys():
             bad_config = config.copy()
@@ -69,7 +69,7 @@ class TestTwitterWatcher(TestCase, TimeoutMixin):
             """When all is said and parsed, this gets called."""
             for key in parsed_result:
                 result[key] = parsed_result[key]
-            self._ioloop.stop()
+            self.stop()
 
         parsers = {
             "www.google.com": FakeParser()
@@ -80,7 +80,8 @@ class TestTwitterWatcher(TestCase, TimeoutMixin):
             "twitter_access_token": "token",
             "twitter_access_token_secret": "token_secret",
             "twitter_search_term": "ireallywanttoknow",
-            "parsers": parsers
+            "parsers": parsers,
+            "callbacks": []
         }
         # should do a full redirect on this
         original_url = "http://bit.ly/julythongoogle"
@@ -88,8 +89,42 @@ class TestTwitterWatcher(TestCase, TimeoutMixin):
         twitter_watcher = TwitterWatcher(self._ioloop, callback, config)
         twitter_watcher.extract_from_tweet({
             "text": "This is an awesome tweet! %s" % original_url,
-            "name": "Josh Marshall"
+            "user": {
+                "name": "Josh Marshall",
+                "screen_name": "joshmarshall",
+                "profile_image_url": "http://stuff.com/profile.jpg"
+            }
         })
         self.add_timeout(5)
         self._ioloop.start()
         self.assertEqual(final_url, result["message"])
+
+    def test_twitter_callbacks(self):
+
+        result = {}
+        def fake_callback(tweet):
+            result["tweet"] = tweet
+
+        config = {
+            "twitter_consumer_key": "key",
+            "twitter_consumer_secret": "secret",
+            "twitter_access_token": "token",
+            "twitter_access_token_secret": "token_secret",
+            "twitter_search_term": "whateverworks",
+            "parsers": {},
+            "callbacks": [fake_callback]
+        }
+        tweet = {
+            "text": "This is a great tweet.",
+            "user": {
+                "screen_name": "joshmarshall",
+                "profile_image_url": "http://stuff.com/profile.jpg"
+            }
+        }
+        twitter_watcher = TwitterWatcher(self._ioloop, None, config)
+        twitter_watcher.extract_from_tweet(tweet)
+        self.assertEqual(result["tweet"], {
+            "username": "joshmarshall",
+            "message": "This is a great tweet.",
+            "picture_url": "http://stuff.com/profile.jpg"
+        })

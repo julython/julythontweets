@@ -27,7 +27,7 @@ class TwitterWatcher(Watcher):
         for key in [
                 "twitter_consumer_key", "twitter_consumer_secret",
                 "twitter_access_token", "twitter_access_token_secret",
-                "twitter_search_term", "parsers"
+                "twitter_search_term", "parsers", "callbacks"
             ]:
             value = configuration.get(key)
             if value is None:
@@ -63,6 +63,17 @@ class TwitterWatcher(Watcher):
             check_redirect(link_match.group())
         else:
             logging.warning("Tweet contained no link: %s" % tweet["text"])
+        cleaned = self._prepare_for_callbacks(tweet)
+        for callback in self._callbacks:
+            callback(cleaned)
+
+    def _prepare_for_callbacks(self, tweet):
+        """Normalizing minimal information for now."""
+        cleaned_tweet = {}
+        cleaned_tweet["username"] = tweet["user"]["screen_name"]
+        cleaned_tweet["message"] = tweet["text"]
+        cleaned_tweet["picture_url"] = tweet["user"]["profile_image_url"]
+        return cleaned_tweet
 
     def parse(self, final_url, tweet):
         """Do what is necessary from the actual URL."""

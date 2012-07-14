@@ -27,7 +27,8 @@ class TestConfig(TestCase):
     def test_config_defaults(self):
         self.assertEqual(config.PORT, 9000)
         self.assertEqual(config.HOST, "localhost")
-        self.assertEqual(config.JULYTHON_ENDPOINT_URL,
+        self.assertEqual(
+            config.JULYTHON_ENDPOINT_URL,
             "http://localhost:8080/api/v1/commits")
         self.assertEqual(config.JULYTHON_ENDPOINT_SECRET, "foobar")
         self.assertEqual(config.TWITTER_CONSUMER_KEY, "fakeconsumerkey")
@@ -36,6 +37,9 @@ class TestConfig(TestCase):
         self.assertEqual(
             config.TWITTER_ACCESS_TOKEN_SECRET, "fakeaccesstokensecret")
         self.assertEqual(config.TWITTER_SEARCH_TERM, "julython")
+        self.assertEqual(
+            config.JULYTHON_LIVE_ENDPOINT_URL,
+            "http://localhost:8080/api/v1/live")
 
     def test_config_overwrite(self):
         self._environ("TWITTER_CONSUMER_KEY", "newkey")

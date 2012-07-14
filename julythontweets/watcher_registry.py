@@ -1,6 +1,7 @@
 """Helper functions for registering and configuring IOLoop watchers."""
 
 from julythontweets import config
+from julythontweets.callbacks import JulythonLiveTwitterCallback
 from julythontweets.parsers.github_parser import GitHubParser
 from julythontweets.watchers.twitter_watcher import TwitterWatcher
 
@@ -30,6 +31,7 @@ def _get_twitter_configuration(ioloop):
     """Build twitter configuration."""
     # parser stuff should be moved into parser_registry module.
     github_parser = GitHubParser(ioloop, {})
+    julython_live_twitter_callback = JulythonLiveTwitterCallback(ioloop)
     return {
         "twitter_consumer_key": config.TWITTER_CONSUMER_KEY,
         "twitter_consumer_secret": config.TWITTER_CONSUMER_SECRET,
@@ -39,7 +41,8 @@ def _get_twitter_configuration(ioloop):
         "parsers": {
             "github.com": github_parser,
             "www.github.com": github_parser
-        }
+        },
+        "callbacks": [julython_live_twitter_callback]
     }
 
 
