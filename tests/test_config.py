@@ -46,10 +46,13 @@ class TestConfig(TestCase):
         self._environ("TWITTER_CONSUMER_SECRET", "newsecret")
         self._environ("PORT", "7081")
         self._environ("JULYTHON_ENDPOINT_URL", "http://1.1.1.1:9999")
+        self._environ("JULYTHON_LIVE_ENDPOINT_URL", "http://1.1.1.1:8888")
         reload(config)
         self.assertEqual(config.TWITTER_CONSUMER_KEY, "newkey")
         self.assertEqual(config.TWITTER_CONSUMER_SECRET, "newsecret")
         self.assertEqual(config.PORT, 7081)
         self.assertEqual(config.JULYTHON_ENDPOINT_URL, "http://1.1.1.1:9999")
+        self.assertEqual(
+            config.JULYTHON_LIVE_ENDPOINT_URL, "http://1.1.1.1:8888")
 
 
