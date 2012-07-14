@@ -5,6 +5,7 @@ from julythontweets.watcher import Watcher
 import re
 from tornado.httpclient import AsyncHTTPClient
 import tweetstream
+import sys
 import urlparse
 
 # TODO: Extracting links from a tweet is wrong -- the watcher should
@@ -38,8 +39,13 @@ class TwitterWatcher(Watcher):
         """Attach to the IOLoop."""
         self._tweetstream = tweetstream.TweetStream(ioloop=self._ioloop,
             configuration=self._configuration)
+        self._tweetstream.set_error_callback(self._error)
         self._tweetstream.fetch("/1/statuses/filter.json?track=%s" %
             self._twitter_search_term, callback=self.extract_from_tweet)
+
+    def _error(self, error):
+        logging.error("Error starting tweetstream: %s" % error)
+        sys.exit(1)
 
     def extract_from_tweet(self, tweet):
         """Using the configured parsers, parse and post tweets."""
