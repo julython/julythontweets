@@ -12,6 +12,7 @@ class JulythonLiveTwitterCallback(object):
         self._ioloop = ioloop
 
     def __call__(self, tweet):
+        logging.info("Connecting to %s" % config.JULYTHON_LIVE_ENDPOINT_URL)
         client = AsyncHTTPClient(io_loop=self._ioloop)
         client.fetch(
             config.JULYTHON_LIVE_ENDPOINT_URL,
